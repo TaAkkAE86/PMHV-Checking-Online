@@ -7,74 +7,104 @@
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, sans-serif;
-      background-color: #f9f9f9;
+      background-color: #f0f2f5; /* Slightly grayer background */
       margin: 0;
       padding: 20px;
-      color: #222;
+      color: #333;
     }
 
-    h1, h2 {
+    h1 {
       color: #1a237e;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       text-align: center;
+      font-size: 2.5em;
     }
-
-    h2 { text-align: left; }
+    
+    h2 {
+      color: #3f51b5;
+      border-bottom: 2px solid #3f51b5;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
 
     .container {
       background-color: #fff;
-      padding: 20px 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       margin-bottom: 30px;
       max-width: 1200px;
       margin-left: auto;
       margin-right: auto;
     }
 
-    .button-grid {
+    .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 20px;
     }
 
-    .button-wrapper {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .btn {
+    .vehicle-card {
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
       padding: 15px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      color: #000;
-      cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       transition: transform 0.2s, box-shadow 0.2s;
-      text-decoration: none;
-      display: block;
-      width: 100%;
-    }
-
-    .btn-yellow { background-color: #fdd835; }
-    .btn-dark-yellow { background-color: #fbc02d; }
-
-    .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+      cursor: default; /* Remove pointer cursor */
     }
     
-    .info-display {
-      font-size: 0.85em;
-      margin-top: 10px;
-      color: #d32f2f; /* เปลี่ยนเป็นสีแดงเพื่อเน้น */
-      min-height: 30px;
-      font-weight: bold;
+    .vehicle-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     }
+
+    .vehicle-no {
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 0 0 10px 0;
+      color: #333;
+    }
+    
+    .pm-date {
+        font-size: 1.1em;
+        font-weight: 600;
+        color: #d32f2f; /* Red color for date */
+    }
+
+    .pm-time {
+        font-size: 0.9em;
+        color: #555;
+        margin-top: 5px;
+        background-color: #eeeeee;
+        padding: 4px 8px;
+        border-radius: 5px;
+        display: inline-block;
+    }
+    
+    .no-data {
+        color: #9e9e9e;
+        font-style: italic;
+    }
+    
+    /* Animation for today's PM */
+    .is-today {
+        animation: pulse-animation 1.5s infinite;
+    }
+
+    @keyframes pulse-animation {
+      0% {
+        box-shadow: 0 0 0 0 rgba(63, 81, 181, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(63, 81, 181, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(63, 81, 181, 0);
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -82,31 +112,31 @@
 
   <div class="container">
     <h2>Tow Truck</h2>
-    <div class="button-grid">
-      <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-02</a><div class="info-display" id="info-TT-02">Loading...</div></div>
-      <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-03</a><div class="info-display" id="info-TT-03">Loading...</div></div>
-      <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-10</a><div class="info-display" id="info-TT-10">Loading...</div></div>
-      <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-15</a><div class="info-display" id="info-TT-15">Loading...</div></div>
-      <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-23</a><div class="info-display" id="info-TT-23">Loading...</div></div>
-      <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-30</a><div class="info-display" id="info-TT-30">Loading...</div></div>
-      <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-45</a><div class="info-display" id="info-TT-45">Loading...</div></div>
-      <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-60</a><div class="info-display" id="info-TT-60">Loading...</div></div>
-      <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-49</a><div class="info-display" id="info-TT-49">Loading...</div></div>
-      <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-40</a><div class="info-display" id="info-TT-40">Loading...</div></div>
-      <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-66</a><div class="info-display" id="info-TT-66">Loading...</div></div>
-      <div class="button-wrapper"><a href="#" class="btn btn-yellow">BT-18</a><div class="info-display" id="info-BT-18">Loading...</div></div>
+    <div class="card-grid">
+        <div class="vehicle-card" id="card-TT-02"><div class="vehicle-no">TT-02</div></div>
+        <div class="vehicle-card" id="card-TT-03"><div class="vehicle-no">TT-03</div></div>
+        <div class="vehicle-card" id="card-TT-10"><div class="vehicle-no">TT-10</div></div>
+        <div class="vehicle-card" id="card-TT-15"><div class="vehicle-no">TT-15</div></div>
+        <div class="vehicle-card" id="card-TT-23"><div class="vehicle-no">TT-23</div></div>
+        <div class="vehicle-card" id="card-TT-30"><div class="vehicle-no">TT-30</div></div>
+        <div class="vehicle-card" id="card-TT-45"><div class="vehicle-no">TT-45</div></div>
+        <div class="vehicle-card" id="card-TT-60"><div class="vehicle-no">TT-60</div></div>
+        <div class="vehicle-card" id="card-TT-49"><div class="vehicle-no">TT-49</div></div>
+        <div class="vehicle-card" id="card-TT-40"><div class="vehicle-no">TT-40</div></div>
+        <div class="vehicle-card" id="card-TT-66"><div class="vehicle-no">TT-66</div></div>
+        <div class="vehicle-card" id="card-BT-18"><div class="vehicle-no">BT-18</div></div>
     </div>
   </div>
 
   <div class="container">
     <h2>Forklift</h2>
-     <div class="button-grid">
-      <div class="button-wrapper"><a href="#" class="btn btn-dark-yellow">WF-11</a><div class="info-display" id="info-WF-11">Loading...</div></div>
-      <div class="button-wrapper"><a href="#" class="btn btn-dark-yellow">SF-07</a><div class="info-display" id="info-SF-07">Loading...</div></div>
-      <div class="button-wrapper"><a href="#" class="btn btn-dark-yellow">WF-01</a><div class="info-display" id="info-WF-01">Loading...</div></div>
-      <div class="button-wrapper"><a href="#" class="btn btn-dark-yellow">WF-10</a><div class="info-display" id="info-WF-10">Loading...</div></div>
-      <div class="button-wrapper"><a href="#" class="btn btn-dark-yellow">WF-15</a><div class="info-display" id="info-WF-15">Loading...</div></div>
-      <div class="button-wrapper"><a href="#" class="btn btn-dark-yellow">WF-19</a><div class="info-display" id="info-WF-19">Loading...</div></div>
+     <div class="card-grid">
+        <div class="vehicle-card" id="card-WF-11"><div class="vehicle-no">WF-11</div></div>
+        <div class="vehicle-card" id="card-SF-07"><div class="vehicle-no">SF-07</div></div>
+        <div class="vehicle-card" id="card-WF-01"><div class="vehicle-no">WF-01</div></div>
+        <div class="vehicle-card" id="card-WF-10"><div class="vehicle-no">WF-10</div></div>
+        <div class="vehicle-card" id="card-WF-15"><div class="vehicle-no">WF-15</div></div>
+        <div class="vehicle-card" id="card-WF-19"><div class="vehicle-no">WF-19</div></div>
      </div>
   </div>
 
@@ -117,37 +147,50 @@
         if (!response.ok) throw new Error('Cannot load data.json');
         
         const pmData = await response.json();
-
-        // สร้าง Map เพื่อให้ค้นหาข้อมูลรถได้เร็วขึ้น
         const pmDataMap = new Map(pmData.map(item => [item.vehicleNo, item]));
 
-        // วนลูปเพื่ออัปเดตข้อมูลของปุ่มทุกปุ่ม
-        document.querySelectorAll('.info-display').forEach(infoElement => {
-            const vehicleId = infoElement.id.replace('info-', '');
+        // Get today's date in YYYY-MM-DD format for comparison
+        const today = new Date();
+        const todayString = today.getFullYear() + '-' + 
+                            String(today.getMonth() + 1).padStart(2, '0') + '-' + 
+                            String(today.getDate()).padStart(2, '0');
+
+        document.querySelectorAll('.vehicle-card').forEach(cardElement => {
+            const vehicleId = cardElement.id.replace('card-', '');
             const record = pmDataMap.get(vehicleId);
+            
+            // Clear existing content and add vehicle number
+            cardElement.innerHTML = `<div class="vehicle-no">${vehicleId}</div>`;
 
             if (record) {
-                // จัดรูปแบบวันที่ให้สวยงาม
                 const nextPmDate = new Date(record.nextPmDate);
-                const displayDate = nextPmDate.toLocaleDateString('th-TH', {
+                // Format date to show English month (e.g., 28 Sep)
+                const displayDate = nextPmDate.toLocaleDateString('en-GB', {
                     day: '2-digit',
                     month: 'short',
-                    // ไม่ต้องแสดงปี ค.ศ. เพื่อความกระชับ
                 });
                 
-                // ใช้ข้อมูล nextPmTime ที่เป็นช่วงเวลา
-                const displayTime = record.nextPmTime; 
+                const displayTime = record.nextPmTime;
                 
-                infoElement.innerHTML = `${displayDate}<br>${displayTime}`;
+                cardElement.innerHTML += `
+                    <div class="pm-date">${displayDate}</div>
+                    <div class="pm-time">${displayTime}</div>
+                `;
+
+                // Add animation class if the PM date is today
+                if (record.nextPmDate === todayString) {
+                    cardElement.classList.add('is-today');
+                }
+
             } else {
-                infoElement.innerHTML = '-- no data --';
+                cardElement.innerHTML += `<div class="no-data">-- no data --</div>`;
             }
         });
 
       } catch (error) {
         console.error('Error:', error);
-        document.querySelectorAll('.info-display').forEach(el => {
-            el.innerHTML = 'Error loading data';
+        document.querySelectorAll('.vehicle-card').forEach(card => {
+            card.innerHTML += `<div class="no-data">Error</div>`;
         });
       }
     });
