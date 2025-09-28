@@ -210,55 +210,26 @@
     
   </div>
 
-  <script>
-    // --- ส่วนที่ 1: ฟังก์ชันสำหรับแปลงข้อความ CSV ให้เป็น Array ที่ใช้งานได้ ---
-    function parseCSV(csvText) {
-      const lines = csvText.split('\n'); // แบ่งข้อมูลเป็นแต่ละบรรทัด
-      const header = lines[0].split(','); // เอาบรรทัดแรกมาเป็นหัวตาราง
-      const data = [];
-
-      // หา index ของคอลัมน์ที่ต้องการ เพื่อให้สลับตำแหน่งได้
-      const vehicleNoIndex = header.findIndex(h => h.trim() === 'PMHV');
-      const timeIndex = header.findIndex(h => h.trim() === 'Completion time');
-
-      if (vehicleNoIndex === -1 || timeIndex === -1) {
-          console.error("ไม่พบคอลัมน์ 'PM PMHV' หรือ 'PMHV' ในไฟล์ CSV");
-          return [];
-      }
-      
-      // เริ่มวนลูปตั้งแต่บรรทัดที่ 2 (ข้อมูลจริง)
-      for (let i = 1; i < lines.length; i++) {
-        const line = lines[i];
-        if (line.trim() === '') continue; // ข้ามบรรทัดว่าง
-
-        const values = line.split(',');
-        const record = {
-          vehicleNo: values[vehicleNoIndex].trim(),
-          completionTime: values[timeIndex].trim()
-        };
-        data.push(record);
-      }
-      return data;
-    }
-
-    // --- ส่วนที่ 2: ฟังก์ชันหลักสำหรับดึงและแสดงผลข้อมูล ---
+<script>
+    // --- ฟังก์ชันหลักสำหรับดึงและแสดงผลข้อมูล ---
     async function loadAndProcessData() {
       try {
-        // Step 1: ดึงข้อมูลจากไฟล์ CSV (ต้องวางไฟล์ไว้ที่เดียวกับ HTML)
-        const response = await fetch('PM.xlsx - Sheet1.csv');
-        // ถ้าดึงไฟล์ไม่สำเร็จ (เช่นหาไฟล์ไม่เจอ) จะโยน error
+        // Step 1: ดึงข้อมูลจากไฟล์ JSON (เปลี่ยนจาก .csv เป็น .json)
+        const response = await fetch('data.json'); 
         if (!response.ok) {
-          throw new Error('ไม่สามารถโหลดไฟล์ CSV ได้');
+          throw new Error('ไม่สามารถโหลดไฟล์ data.json ได้');
         }
-        const csvText = await response.text();
-
-        // Step 2: แปลงข้อความเป็นข้อมูลที่พร้อมใช้งาน
-        const pmData = parseCSV(csvText);
         
-        // Step 3: ประมวลผลหา "การเช็คล่าสุด" (เหมือนโค้ดเดิม)
+        // Step 2: แปลงข้อมูล JSON (ง่ายกว่าเดิมมาก!)
+        // .json() จะแปลงข้อมูลให้เป็น Array ที่เราใช้ได้ทันที
+        const pmData = await response.json(); 
+        
+        // เราไม่ต้องการฟังก์ชัน parseCSV อีกต่อไป!
+
+        // Step 3: ประมวลผลหา "การเช็คล่าสุด" (โค้ดส่วนนี้เหมือนเดิมทุกประการ)
         const latestChecks = new Map();
         for (const record of pmData) {
-          if (!record.vehicleNo || !record.completionTime) continue; // ข้ามข้อมูลที่ไม่สมบูรณ์
+          if (!record.vehicleNo || !record.completionTime) continue;
 
           const recordTime = new Date(record.completionTime);
           const vehicleNo = record.vehicleNo;
@@ -268,7 +239,7 @@
           }
         }
 
-        // Step 4: นำข้อมูลล่าสุดไปแสดงผล (เหมือนโค้ดเดิม)
+        // Step 4: นำข้อมูลล่าสุดไปแสดงผล (โค้ดส่วนนี้เหมือนเดิมทุกประการ)
         for (const [vehicleNo, checkInfo] of latestChecks.entries()) {
           const infoElement = document.getElementById(`info-${vehicleNo}`);
           if (infoElement) {
@@ -280,11 +251,10 @@
         }
       } catch (error) {
         console.error('เกิดข้อผิดพลาด:', error);
-        // สามารถแสดงข้อความบอกผู้ใช้บนหน้าเว็บได้เช่นกัน
       }
     }
 
-    // --- ส่วนที่ 3: รอให้เว็บโหลดเสร็จแล้วเรียกฟังก์ชันหลัก ---
+    // --- รอให้เว็บโหลดเสร็จแล้วเรียกฟังก์ชันหลัก ---
     document.addEventListener('DOMContentLoaded', loadAndProcessData);
   </script>
 </body>
