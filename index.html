@@ -1,117 +1,291 @@
-
 <!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PMHV Checking Online</title>
+  <title>PMHV Checking Online - Modern</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <style>
+    :root {
+      --primary-color: #005A9C;
+      --secondary-color: #003F6E;
+      --background-color: #F0F2F5;
+      --card-bg-color: #FFFFFF;
+      --text-color: #333333;
+      --header-color: #1A237E;
+      --shadow-color: rgba(0, 0, 0, 0.1);
+    }
+
     body {
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background-color: #f9f9f9;
+      font-family: 'Sarabun', sans-serif;
+      background-color: var(--background-color);
       margin: 0;
       padding: 20px;
-      color: #222;
+      color: var(--text-color);
+      line-height: 1.6;
     }
 
-    h1, h2 {
-      color: #1a237e;
-      margin-bottom: 20px;
+    .main-container {
+      max-width: 900px;
+      margin: 20px auto;
     }
-
-    .section {
+    
+    h1 {
+      color: var(--header-color);
+      text-align: center;
       margin-bottom: 40px;
+    }
+
+    .card {
+      background-color: var(--card-bg-color);
+      border-radius: 12px;
+      padding: 25px 30px;
+      box-shadow: 0 4px 12px var(--shadow-color);
+      margin-bottom: 30px;
+      transition: box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+        box-shadow: 0 8px 20px var(--shadow-color);
+    }
+
+    .card h2 {
+      color: var(--primary-color);
+      margin-top: 0;
+      margin-bottom: 25px;
+      border-bottom: 2px solid var(--background-color);
+      padding-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .card h2 .icon {
+        margin-right: 15px;
     }
 
     .button-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 20px; /* เพิ่มระยะห่างเล็กน้อย */
     }
 
+    /* --- ส่วนที่เพิ่มเข้ามาสำหรับจัดกลุ่มปุ่มและข้อมูล --- */
+    .button-wrapper {
+        text-align: center;
+    }
+    
+    .info-display {
+        font-size: 0.85em; /* ขนาดตัวอักษรเล็กลง */
+        margin-top: 8px; /* ระยะห่างจากปุ่ม */
+        color: #555; /* สีเทาเข้ม */
+        min-height: 30px; /* จองพื้นที่ไว้กัน layout ขยับ */
+    }
+    /* ------------------------------------------- */
+
     .btn {
-      padding: 15px;
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 12px 15px;
       border: none;
       border-radius: 8px;
       font-size: 16px;
-      color: #fff;
+      font-weight: 700;
+      font-family: 'Sarabun', sans-serif;
       cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      transition: transform 0.2s, box-shadow 0.2s;
       text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn-yellow {
-      background-color: #fdd835;
-      color: #000;
-    }
-
-    .btn-dark-yellow {
-      background-color: #fbc02d;
-      color: #000;
+      text-align: center;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      display: block; /* ทำให้ปุ่มเต็มความกว้างของ wrapper */
+      width: 100%;
     }
 
     .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+      background-color: var(--secondary-color);
+      transform: translateY(-3px);
     }
-
-    .container {
-      background-color: #fff;
+    
+    .safety-card {
+      background-color: #E3F2FD;
+      border-left: 5px solid #1976D2;
       padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      margin-bottom: 30px;
-    }
-
-    .safety {
-      background-color: #e3f2fd;
-      padding: 15px;
-      border-left: 5px solid #1976d2;
       border-radius: 8px;
-      color: #0d47a1;
+      color: #0D47A1;
     }
   </style>
 </head>
 <body>
-  <h1>PMHV Checking Online</h1>
 
-  <div class="container section">
-    <h2>Tow Truck</h2>
-    <div class="button-grid">
-      <a href="https://forms.office.com/r/gdqYhVLPGi" class="btn btn-yellow">TT-02</a>
-      <a href="https://forms.office.com/r/8SL809VGHR" class="btn btn-yellow">TT-03</a>
-      <a href="https://forms.office.com/r/v8QDmfxDpj" class="btn btn-yellow">TT-10</a>
-      <a href="https://forms.office.com/r/62uBXM4dxS" class="btn btn-yellow">TT-15</a>
-      <a href="https://forms.office.com/r/cH43XRc25X" class="btn btn-yellow">TT-23</a>
-      <a href="https://forms.office.com/r/tumeNNmbH8" class="btn btn-yellow">TT-30</a>
-      <a href="https://forms.office.com/r/NT1eMsLTba" class="btn btn-yellow">TT-45</a>
-      <a href="https://forms.office.com/r/r6kQ2crB2b" class="btn btn-yellow">TT-60</a>
-      <a href="https://forms.office.com/r/mBM5jfA23p" class="btn btn-yellow">TT-49</a>
-      <a href="https://forms.office.com/r/WzYNpGarV3" class="btn btn-yellow">TT-40</a>
-      <a href="https://forms.office.com/pages/responsepage.aspx?id=eruQyfRRm0O9NpwH-xBBwE9NlCdtXWNGmav1kSjwyX5UMlFLWEpNR1NMR1M3WEQ3RDRVNUQyVTFEVi4u&origin=lprLink&route=shorturl" class="btn btn-yellow">TT-66</a>
-      <a href="https://forms.office.com/r/BUJKKJyBBP" class="btn btn-yellow">BT-18</a>
+  <div class="main-container">
+    <h1>PMHV Checking Online</h1>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-truck-moving icon"></i>Tow Truck</h2>
+      <div class="button-grid">
+        <div class="button-wrapper">
+            <a href="https://forms.office.com/r/gdqYhVLPGi" class="btn">TT-02</a>
+            <div class="info-display" id="info-TT-02">--:--</div>
+        </div>
+        <div class="button-wrapper">
+            <a href="https://forms.office.com/r/8SL809VGHR" class="btn">TT-03</a>
+            <div class="info-display" id="info-TT-03">--:--</div>
+        </div>
+        <div class="button-wrapper">
+            <a href="https://forms.office.com/r/v8QDmfxDpj" class="btn">TT-10</a>
+            <div class="info-display" id="info-TT-10">--:--</div>
+        </div>
+        <div class="button-wrapper">
+            <a href="https://forms.office.com/r/62uBXM4dxS" class="btn">TT-15</a>
+            <div class="info-display" id="info-TT-15">--:--</div>
+        </div>
+        <div class="button-wrapper">
+            <a href="https://forms.office.com/r/cH43XRc25X" class="btn">TT-23</a>
+            <div class="info-display" id="info-TT-23">--:--</div>
+        </div>
+        <div class="button-wrapper">
+            <a href="https://forms.office.com/r/tumeNNmbH8" class="btn">TT-30</a>
+            <div class="info-display" id="info-TT-30">--:--</div>
+        </div>
+        <div class="button-wrapper">
+            <a href="https://forms.office.com/r/NT1eMsLTba" class="btn">TT-45</a>
+            <div class="info-display" id="info-TT-45">--:--</div>
+        </div>
+        <div class="button-wrapper">
+            <a href="https://forms.office.com/r/r6kQ2crB2b" class="btn">TT-60</a>
+            <div class="info-display" id="info-TT-60">--:--</div>
+        </div>
+         <div class="button-wrapper">
+            <a href="https://forms.office.com/r/mBM5jfA23p" class="btn">TT-49</a>
+            <div class="info-display" id="info-TT-49">--:--</div>
+        </div>
+        <div class="button-wrapper">
+            <a href="https://forms.office.com/r/WzYNpGarV3" class="btn">TT-40</a>
+            <div class="info-display" id="info-TT-40">--:--</div>
+        </div>
+        <div class="button-wrapper">
+            <a href="https://forms.office.com/pages/responsepage.aspx?id=eruQyfRRm0O9NpwH-xBBwE9NlCdtXWNGmav1kSjwyX5UMlFLWEpNR1NMR1M3WEQ3RDRVNUQyVTFEVi4u&origin=lprLink&route=shorturl" class="btn">TT-66</a>
+            <div class="info-display" id="info-TT-66">--:--</div>
+        </div>
+        <div class="button-wrapper">
+            <a href="https://forms.office.com/r/BUJKKJyBBP" class="btn">BT-18</a>
+            <div class="info-display" id="info-BT-18">--:--</div>
+        </div>
+      </div>
     </div>
+
+    <div class="card">
+      <h2><i class="fa-solid fa-forklift icon"></i>Forklift</h2>
+      <div class="button-grid">
+        <div class="button-wrapper">
+            <a href="https://forms.office.com/r/NnS1vkULUT" class="btn">WF-11</a>
+            <div class="info-display" id="info-WF-11">--:--</div>
+        </div>
+        <div class="button-wrapper">
+            <a href="https://forms.office.com/r/B9n7pnzRU3" class="btn">SF-07</a>
+            <div class="info-display" id="info-SF-07">--:--</div>
+        </div>
+        <div class="button-wrapper">
+            <a href="https://forms.office.com/r/nxtjEdT64j" class="btn">WF-01</a>
+            <div class="info-display" id="info-WF-01">--:--</div>
+        </div>
+        <div class="button-wrapper">
+            <a href="https://forms.office.com/r/ZBixLy3QzN" class="btn">WF-10</a>
+            <div class="info-display" id="info-WF-10">--:--</div>
+        </div>
+        <div class="button-wrapper">
+            <a href="https://forms.office.com/r/fEGnZQcXP2" class="btn">WF-15</a>
+            <div class="info-display" id="info-WF-15">--:--</div>
+        </div>
+         <div class="button-wrapper">
+            <a href="https://forms.office.com/r/vZcdaAMGWa" class="btn">WF-19</a>
+            <div class="info-display" id="info-WF-19">--:--</div>
+        </div>
+      </div>
+    </div>
+    
   </div>
 
-  <div class="container section">
-    <h2>Forklift</h2>
-    <div class="button-grid">
-      <a href="https://forms.office.com/r/NnS1vkULUT" class="btn btn-dark-yellow">WF-11</a>
-      <a href="https://forms.office.com/r/B9n7pnzRU3" class="btn btn-dark-yellow">SF-07</a>
-      <a href="https://forms.office.com/r/nxtjEdT64j" class="btn btn-dark-yellow">WF-01</a>
-      <a href="https://forms.office.com/r/ZBixLy3QzN" class="btn btn-dark-yellow">WF-10</a>
-      <a href="https://forms.office.com/r/fEGnZQcXP2" class="btn btn-dark-yellow">WF-15</a>
-      <a href="https://forms.office.com/r/vZcdaAMGWa" class="btn btn-dark-yellow">WF-19</a>
-    </div>
-  </div>
+  <script>
+    // --- ส่วนที่ 1: ฟังก์ชันสำหรับแปลงข้อความ CSV ให้เป็น Array ที่ใช้งานได้ ---
+    function parseCSV(csvText) {
+      const lines = csvText.split('\n'); // แบ่งข้อมูลเป็นแต่ละบรรทัด
+      const header = lines[0].split(','); // เอาบรรทัดแรกมาเป็นหัวตาราง
+      const data = [];
 
-  <div class="container section">
-    <h2>คำแนะนำด้านความปลอดภัยในการใช้ Forklift</h2>
-    <div class="safety">
-      การใช้งานรถ Forklift ต้องดำเนินการโดยผู้ที่ได้รับการฝึกอบรมและมีใบอนุญาตเท่านั้น ควรตรวจสอบสภาพรถก่อนใช้งานทุกครั้ง สวมใส่อุปกรณ์ป้องกันส่วนบุคคล (PPE) เช่น หมวกนิรภัยและรองเท้านิรภัย ห้ามบรรทุกน้ำหนักเกินกำหนด และควรขับขี่ด้วยความระมัดระวังในพื้นที่ที่มีคนเดินผ่าน เพื่อป้องกันอุบัติเหตุและรักษาความปลอดภัยของทุกคนในพื้นที่ทำงาน
-    </div>
-  </div>
+      // หา index ของคอลัมน์ที่ต้องการ เพื่อให้สลับตำแหน่งได้
+      const vehicleNoIndex = header.findIndex(h => h.trim() === 'หมายเลขรถ');
+      const timeIndex = header.findIndex(h => h.trim() === 'Completion time');
+
+      if (vehicleNoIndex === -1 || timeIndex === -1) {
+          console.error("ไม่พบคอลัมน์ 'หมายเลขรถ' หรือ 'Completion time' ในไฟล์ CSV");
+          return [];
+      }
+      
+      // เริ่มวนลูปตั้งแต่บรรทัดที่ 2 (ข้อมูลจริง)
+      for (let i = 1; i < lines.length; i++) {
+        const line = lines[i];
+        if (line.trim() === '') continue; // ข้ามบรรทัดว่าง
+
+        const values = line.split(',');
+        const record = {
+          vehicleNo: values[vehicleNoIndex].trim(),
+          completionTime: values[timeIndex].trim()
+        };
+        data.push(record);
+      }
+      return data;
+    }
+
+    // --- ส่วนที่ 2: ฟังก์ชันหลักสำหรับดึงและแสดงผลข้อมูล ---
+    async function loadAndProcessData() {
+      try {
+        // Step 1: ดึงข้อมูลจากไฟล์ CSV (ต้องวางไฟล์ไว้ที่เดียวกับ HTML)
+        const response = await fetch('PM.xlsx - Sheet1.csv');
+        // ถ้าดึงไฟล์ไม่สำเร็จ (เช่นหาไฟล์ไม่เจอ) จะโยน error
+        if (!response.ok) {
+          throw new Error('ไม่สามารถโหลดไฟล์ CSV ได้');
+        }
+        const csvText = await response.text();
+
+        // Step 2: แปลงข้อความเป็นข้อมูลที่พร้อมใช้งาน
+        const pmData = parseCSV(csvText);
+        
+        // Step 3: ประมวลผลหา "การเช็คล่าสุด" (เหมือนโค้ดเดิม)
+        const latestChecks = new Map();
+        for (const record of pmData) {
+          if (!record.vehicleNo || !record.completionTime) continue; // ข้ามข้อมูลที่ไม่สมบูรณ์
+
+          const recordTime = new Date(record.completionTime);
+          const vehicleNo = record.vehicleNo;
+
+          if (!latestChecks.has(vehicleNo) || recordTime > latestChecks.get(vehicleNo).dateObj) {
+            latestChecks.set(vehicleNo, { dateObj: recordTime });
+          }
+        }
+
+        // Step 4: นำข้อมูลล่าสุดไปแสดงผล (เหมือนโค้ดเดิม)
+        for (const [vehicleNo, checkInfo] of latestChecks.entries()) {
+          const infoElement = document.getElementById(`info-${vehicleNo}`);
+          if (infoElement) {
+            const date = checkInfo.dateObj;
+            const displayDate = `Date: ${date.getDate()}-${date.toLocaleString('default', { month: 'short' })}-${date.getFullYear()}`;
+            const displayTime = `เวลา: ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`;
+            infoElement.innerHTML = `${displayDate}<br>${displayTime}`;
+          }
+        }
+      } catch (error) {
+        console.error('เกิดข้อผิดพลาด:', error);
+        // สามารถแสดงข้อความบอกผู้ใช้บนหน้าเว็บได้เช่นกัน
+      }
+    }
+
+    // --- ส่วนที่ 3: รอให้เว็บโหลดเสร็จแล้วเรียกฟังก์ชันหลัก ---
+    document.addEventListener('DOMContentLoaded', loadAndProcessData);
+  </script>
 </body>
 </html>
