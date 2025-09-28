@@ -13,11 +13,13 @@
       color: #222;
     }
 
-    h1 {
+    h1, h2 {
       color: #1a237e;
       margin-bottom: 20px;
       text-align: center;
     }
+
+    h2 { text-align: left; }
 
     .container {
       background-color: #fff;
@@ -25,7 +27,7 @@
       border-radius: 10px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       margin-bottom: 30px;
-      max-width: 1000px;
+      max-width: 1200px; /* ขยายความกว้างเผื่อปุ่มเยอะ */
       margin-left: auto;
       margin-right: auto;
     }
@@ -67,10 +69,10 @@
     }
     
     .info-display {
-        font-size: 0.8em;
+        font-size: 0.85em;
         margin-top: 10px;
-        color: #555;
-        min-height: 30px; /* จองพื้นที่ไว้กัน layout ขยับ */
+        color: #d32f2f; /* เปลี่ยนเป็นสีแดงเพื่อเน้น */
+        min-height: 30px;
         font-weight: bold;
     }
 
@@ -82,37 +84,31 @@
   <div class="container">
     <h2>Tow Truck</h2>
     <div class="button-grid">
-      <div class="button-wrapper">
-          <a href="#" class="btn btn-yellow">TT-02</a>
-          <div class="info-display" id="info-TT-02">Loading...</div>
-      </div>
-      <div class="button-wrapper">
-          <a href="#" class="btn btn-yellow">TT-03</a>
-          <div class="info-display" id="info-TT-03">Loading...</div>
-      </div>
-      <div class="button-wrapper">
-          <a href="#" class="btn btn-yellow">TT-10</a>
-          <div class="info-display" id="info-TT-10">Loading...</div>
-      </div>
-       <div class="button-wrapper">
-          <a href="#" class="btn btn-yellow">WF-11</a>
-          <div class="info-display" id="info-WF-11">Loading...</div>
-      </div>
-      </div>
+        <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-02</a><div class="info-display" id="info-TT-02">Loading...</div></div>
+        <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-03</a><div class="info-display" id="info-TT-03">Loading...</div></div>
+        <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-10</a><div class="info-display" id="info-TT-10">Loading...</div></div>
+        <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-15</a><div class="info-display" id="info-TT-15">Loading...</div></div>
+        <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-23</a><div class="info-display" id="info-TT-23">Loading...</div></div>
+        <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-30</a><div class="info-display" id="info-TT-30">Loading...</div></div>
+        <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-45</a><div class="info-display" id="info-TT-45">Loading...</div></div>
+        <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-60</a><div class="info-display" id="info-TT-60">Loading...</div></div>
+        <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-49</a><div class="info-display" id="info-TT-49">Loading...</div></div>
+        <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-40</a><div class="info-display" id="info-TT-40">Loading...</div></div>
+        <div class="button-wrapper"><a href="#" class="btn btn-yellow">TT-66</a><div class="info-display" id="info-TT-66">Loading...</div></div>
+        <div class="button-wrapper"><a href="#" class="btn btn-yellow">BT-18</a><div class="info-display" id="info-BT-18">Loading...</div></div>
+    </div>
   </div>
 
   <div class="container">
     <h2>Forklift</h2>
      <div class="button-grid">
-       <div class="button-wrapper">
-          <a href="#" class="btn btn-dark-yellow">SF-07</a>
-          <div class="info-display" id="info-SF-07">Loading...</div>
-      </div>
-       <div class="button-wrapper">
-          <a href="#" class="btn btn-dark-yellow">TT-15</a>
-          <div class="info-display" id="info-TT-15">Loading...</div>
-      </div>
-      </div>
+        <div class="button-wrapper"><a href="#" class="btn btn-dark-yellow">WF-11</a><div class="info-display" id="info-WF-11">Loading...</div></div>
+        <div class="button-wrapper"><a href="#" class="btn btn-dark-yellow">SF-07</a><div class="info-display" id="info-SF-07">Loading...</div></div>
+        <div class="button-wrapper"><a href="#" class="btn btn-dark-yellow">WF-01</a><div class="info-display" id="info-WF-01">Loading...</div></div>
+        <div class="button-wrapper"><a href="#" class="btn btn-dark-yellow">WF-10</a><div class="info-display" id="info-WF-10">Loading...</div></div>
+        <div class="button-wrapper"><a href="#" class="btn btn-dark-yellow">WF-15</a><div class="info-display" id="info-WF-15">Loading...</div></div>
+        <div class="button-wrapper"><a href="#" class="btn btn-dark-yellow">WF-19</a><div class="info-display" id="info-WF-19">Loading...</div></div>
+     </div>
   </div>
 
   <script>
@@ -123,35 +119,30 @@
         
         const pmData = await response.json();
 
-        // 1. Process data to find the latest check for each vehicle
-        const latestChecks = new Map();
+        // นำข้อมูล PM มาแสดงผลโดยตรง
         for (const record of pmData) {
-            if (!record.vehicleNo || !record.completionTime) continue;
-            const recordTime = new Date(record.completionTime);
-            if (!latestChecks.has(record.vehicleNo) || recordTime > latestChecks.get(record.vehicleNo)) {
-                latestChecks.set(record.vehicleNo, recordTime);
-            }
-        }
-        
-        // 2. Update the display under each button
-        for (const [vehicleNo, dateObj] of latestChecks.entries()) {
-            const infoElement = document.getElementById(`info-${vehicleNo}`);
+            if (!record.vehicleNo || !record.nextPmDate) continue;
+
+            const infoElement = document.getElementById(`info-${record.vehicleNo}`);
             if (infoElement) {
-                // สมมติว่า PM ครั้งต่อไปคือ 3 เดือนหลังจากเช็คครั้งล่าสุด
-                const nextPmDate = new Date(dateObj);
-                nextPmDate.setMonth(nextPmDate.getMonth() + 3);
+                const nextPmDate = new Date(record.nextPmDate);
 
                 const displayDate = nextPmDate.toLocaleDateString('th-TH', {
-                    day: 'numeric',
+                    day: '2-digit',
                     month: 'short',
                     year: 'numeric'
                 });
+
+                const displayTime = nextPmDate.toLocaleTimeString('th-TH', {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
                 
-                infoElement.innerHTML = `PM: ${displayDate}`;
+                infoElement.innerHTML = `PM: ${displayDate} ${displayTime}`;
             }
         }
 
-        // 3. Clear "Loading..." for vehicles with no data
+        // ล้าง "Loading..." สำหรับรถที่ไม่มีข้อมูล
         document.querySelectorAll('.info-display').forEach(el => {
             if (el.innerHTML === 'Loading...') {
                 el.innerHTML = '-- no data --';
