@@ -218,11 +218,11 @@
       const data = [];
 
       // หา index ของคอลัมน์ที่ต้องการ เพื่อให้สลับตำแหน่งได้
-      const vehicleNoIndex = header.findIndex(h => h.trim() === 'PM PMHV');
-      const timeIndex = header.findIndex(h => h.trim() === 'PM PMHV');
+      const vehicleNoIndex = header.findIndex(h => h.trim() === 'PMHV');
+      const timeIndex = header.findIndex(h => h.trim() === 'Completion time');
 
       if (vehicleNoIndex === -1 || timeIndex === -1) {
-          console.error("ไม่พบคอลัมน์ 'PM PMHV' หรือ 'PM PMHV' ในไฟล์ CSV");
+          console.error("ไม่พบคอลัมน์ 'PM PMHV' หรือ 'PMHV' ในไฟล์ CSV");
           return [];
       }
       
