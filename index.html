@@ -7,7 +7,7 @@
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, sans-serif;
-      background-color: #f0f2f5; /* Slightly grayer background */
+      background-color: #f0f2f5;
       margin: 0;
       padding: 20px;
       color: #333;
@@ -43,6 +43,13 @@
       grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
       gap: 20px;
     }
+    
+    /* Style for the link wrapper to remove underline etc. */
+    .card-link {
+        text-decoration: none;
+        color: inherit;
+        display: block; /* Ensures the link takes up the full grid space */
+    }
 
     .vehicle-card {
       background: #ffffff;
@@ -52,10 +59,11 @@
       text-align: center;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       transition: transform 0.2s, box-shadow 0.2s;
-      cursor: default; /* Remove pointer cursor */
+      height: 100%; /* Make card fill the link wrapper */
+      box-sizing: border-box; /* Important for padding and height */
     }
     
-    .vehicle-card:hover {
+    .card-link:hover .vehicle-card {
         transform: translateY(-5px);
         box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     }
@@ -70,7 +78,7 @@
     .pm-date {
         font-size: 1.1em;
         font-weight: 600;
-        color: #d32f2f; /* Red color for date */
+        color: #d32f2f;
     }
 
     .pm-time {
@@ -88,21 +96,14 @@
         font-style: italic;
     }
     
-    /* Animation for today's PM */
-    .is-today {
+    .is-today .vehicle-card { /* Apply animation to the card inside the link */
         animation: pulse-animation 1.5s infinite;
     }
 
     @keyframes pulse-animation {
-      0% {
-        box-shadow: 0 0 0 0 rgba(63, 81, 181, 0.7);
-      }
-      70% {
-        box-shadow: 0 0 0 10px rgba(63, 81, 181, 0);
-      }
-      100% {
-        box-shadow: 0 0 0 0 rgba(63, 81, 181, 0);
-      }
+      0% { box-shadow: 0 0 0 0 rgba(63, 81, 181, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(63, 81, 181, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(63, 81, 181, 0); }
     }
 
   </style>
@@ -113,35 +114,57 @@
   <div class="container">
     <h2>Tow Truck</h2>
     <div class="card-grid">
-        <div class="vehicle-card" id="card-TT-02"><div class="vehicle-no">TT-02</div>"https://forms.office.com/r/gdqYhVLPGi"</div>
-        <div class="vehicle-card" id="card-TT-03"><div class="vehicle-no">TT-03</div></div>
-        <div class="vehicle-card" id="card-TT-10"><div class="vehicle-no">TT-10</div></div>
-        <div class="vehicle-card" id="card-TT-15"><div class="vehicle-no">TT-15</div></div>
-        <div class="vehicle-card" id="card-TT-23"><div class="vehicle-no">TT-23</div></div>
-        <div class="vehicle-card" id="card-TT-30"><div class="vehicle-no">TT-30</div></div>
-        <div class="vehicle-card" id="card-TT-45"><div class="vehicle-no">TT-45</div></div>
-        <div class="vehicle-card" id="card-TT-60"><div class="vehicle-no">TT-60</div></div>
-        <div class="vehicle-card" id="card-TT-49"><div class="vehicle-no">TT-49</div></div>
-        <div class="vehicle-card" id="card-TT-40"><div class="vehicle-no">TT-40</div></div>
-        <div class="vehicle-card" id="card-TT-66"><div class="vehicle-no">TT-66</div></div>
-        <div class="vehicle-card" id="card-BT-18"><div class="vehicle-no">BT-18</div></div>
+        <a href="#" id="link-TT-02" class="card-link"><div class="vehicle-card"><div class="vehicle-no">TT-02</div></div></a>
+        <a href="#" id="link-TT-03" class="card-link"><div class="vehicle-card"><div class="vehicle-no">TT-03</div></div></a>
+        <a href="#" id="link-TT-10" class="card-link"><div class="vehicle-card"><div class="vehicle-no">TT-10</div></div></a>
+        <a href="#" id="link-TT-15" class="card-link"><div class="vehicle-card"><div class="vehicle-no">TT-15</div></div></a>
+        <a href="#" id="link-TT-23" class="card-link"><div class="vehicle-card"><div class="vehicle-no">TT-23</div></div></a>
+        <a href="#" id="link-TT-30" class="card-link"><div class="vehicle-card"><div class="vehicle-no">TT-30</div></div></a>
+        <a href="#" id="link-TT-45" class="card-link"><div class="vehicle-card"><div class="vehicle-no">TT-45</div></div></a>
+        <a href="#" id="link-TT-60" class="card-link"><div class="vehicle-card"><div class="vehicle-no">TT-60</div></div></a>
+        <a href="#" id="link-TT-49" class="card-link"><div class="vehicle-card"><div class="vehicle-no">TT-49</div></div></a>
+        <a href="#" id="link-TT-40" class="card-link"><div class="vehicle-card"><div class="vehicle-no">TT-40</div></div></a>
+        <a href="#" id="link-TT-66" class="card-link"><div class="vehicle-card"><div class="vehicle-no">TT-66</div></div></a>
+        <a href="#" id="link-BT-18" class="card-link"><div class="vehicle-card"><div class="vehicle-no">BT-18</div></div></a>
     </div>
   </div>
 
   <div class="container">
     <h2>Forklift</h2>
      <div class="card-grid">
-        <div class="vehicle-card" id="card-WF-11"><div class="vehicle-no">WF-11</div></div>
-        <div class="vehicle-card" id="card-SF-07"><div class="vehicle-no">SF-07</div></div>
-        <div class="vehicle-card" id="card-WF-01"><div class="vehicle-no">WF-01</div></div>
-        <div class="vehicle-card" id="card-WF-10"><div class="vehicle-no">WF-10</div></div>
-        <div class="vehicle-card" id="card-WF-15"><div class="vehicle-no">WF-15</div></div>
-        <div class="vehicle-card" id="card-WF-19"><div class="vehicle-no">WF-19</div></div>
+        <a href="#" id="link-WF-11" class="card-link"><div class="vehicle-card"><div class="vehicle-no">WF-11</div></div></a>
+        <a href="#" id="link-SF-07" class="card-link"><div class="vehicle-card"><div class="vehicle-no">SF-07</div></div></a>
+        <a href="#" id="link-WF-01" class="card-link"><div class="vehicle-card"><div class="vehicle-no">WF-01</div></div></a>
+        <a href="#" id="link-WF-10" class="card-link"><div class="vehicle-card"><div class="vehicle-no">WF-10</div></div></a>
+        <a href="#" id="link-WF-15" class="card-link"><div class="vehicle-card"><div class="vehicle-no">WF-15</div></div></a>
+        <a href="#" id="link-WF-19" class="card-link"><div class="vehicle-card"><div class="vehicle-no">WF-19</div></div></a>
      </div>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', async () => {
+      // --- Store Vehicle Links Here ---
+      const vehicleLinks = {
+        'TT-02': 'https://forms.office.com/r/gdqYhVLPGi',
+        'TT-03': 'https://forms.office.com/r/8SL809VGHR',
+        'TT-10': 'https://forms.office.com/r/v8QDmfxDpj',
+        'TT-15': 'https://forms.office.com/r/62uBXM4dxS',
+        'TT-23': 'https://forms.office.com/r/cH43XRc25X',
+        'TT-30': 'https://forms.office.com/r/tumeNNmbH8',
+        'TT-45': 'https://forms.office.com/r/NT1eMsLTba',
+        'TT-60': 'https://forms.office.com/r/r6kQ2crB2b',
+        'TT-49': 'https://forms.office.com/r/mBM5jfA23p',
+        'TT-40': 'https://forms.office.com/r/WzYNpGarV3',
+        'TT-66': 'https://forms.office.com/pages/responsepage.aspx?id=eruQyfRRm0O9NpwH-xBBwE9NlCdtXWNGmav1kSjwyX5UMlFLWEpNR1NMR1M3WEQ3RDRVNUQyVTFEVi4u&origin=lprLink&route=shorturl',
+        'BT-18': 'https://forms.office.com/r/BUJKKJyBBP',
+        'WF-11': 'https://forms.office.com/r/NnS1vkULUT',
+        'SF-07': 'https://forms.office.com/r/B9n7pnzRU3',
+        'WF-01': 'https://forms.office.com/r/nxtjEdT64j',
+        'WF-10': 'https://forms.office.com/r/ZBixLy3QzN',
+        'WF-15': 'https://forms.office.com/r/fEGnZQcXP2',
+        'WF-19': 'https://forms.office.com/r/vZcdaAMGWa'
+      };
+
       try {
         const response = await fetch('data.json');
         if (!response.ok) throw new Error('Cannot load data.json');
@@ -149,22 +172,24 @@
         const pmData = await response.json();
         const pmDataMap = new Map(pmData.map(item => [item.vehicleNo, item]));
 
-        // Get today's date in YYYY-MM-DD format for comparison
         const today = new Date();
         const todayString = today.getFullYear() + '-' + 
                             String(today.getMonth() + 1).padStart(2, '0') + '-' + 
                             String(today.getDate()).padStart(2, '0');
 
-        document.querySelectorAll('.vehicle-card').forEach(cardElement => {
-            const vehicleId = cardElement.id.replace('card-', '');
+        document.querySelectorAll('.card-link').forEach(linkElement => {
+            const vehicleId = linkElement.id.replace('link-', '');
+            const cardElement = linkElement.querySelector('.vehicle-card');
             const record = pmDataMap.get(vehicleId);
             
-            // Clear existing content and add vehicle number
-            cardElement.innerHTML = `<div class="vehicle-no">${vehicleId}</div>`;
-
+            // Set the link URL
+            if (vehicleLinks[vehicleId]) {
+                linkElement.href = vehicleLinks[vehicleId];
+            }
+            
+            // Populate card with PM data
             if (record) {
                 const nextPmDate = new Date(record.nextPmDate);
-                // Format date to show English month (e.g., 28 Sep)
                 const displayDate = nextPmDate.toLocaleDateString('en-GB', {
                     day: '2-digit',
                     month: 'short',
@@ -172,14 +197,14 @@
                 
                 const displayTime = record.nextPmTime;
                 
-                cardElement.innerHTML += `
+                cardElement.innerHTML = `
+                    <div class="vehicle-no">${vehicleId}</div>
                     <div class="pm-date">${displayDate}</div>
                     <div class="pm-time">${displayTime}</div>
                 `;
 
-                // Add animation class if the PM date is today
                 if (record.nextPmDate === todayString) {
-                    cardElement.classList.add('is-today');
+                    linkElement.classList.add('is-today'); // Add animation to the link wrapper
                 }
 
             } else {
