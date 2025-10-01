@@ -225,7 +225,7 @@
     "nextPmTime": "22:30-00:30"
   },
   {
-    "vehicleNo": "SF-09",
+    "vehicleNo": "TT-26",
     "nextPmDate": "2025-10-09",
     "nextPmTime": "00:30-02:30"
   },
@@ -265,14 +265,19 @@
     "nextPmTime": "22:30-00:30"
   },
   {
-    "vehicleNo": "TT-37",
+    "vehicleNo": "TT-27",
     "nextPmDate": "2025-10-10",
     "nextPmTime": "00:30-02:30"
   },
   {
-    "vehicleNo": "ST-01",
+    "vehicleNo": "TT-37",
     "nextPmDate": "2025-10-10",
     "nextPmTime": "03:30-05:30"
+  },
+  {
+    "vehicleNo": "ST-01",
+    "nextPmDate": "2025-10-10",
+    "nextPmTime": "05:30-08:00"
   },
   {
     "vehicleNo": "BF-10",
@@ -295,14 +300,24 @@
     "nextPmTime": "15:00-17:00"
   },
   {
-    "vehicleNo": "WF-17",
+    "vehicleNo": "TT-31",
     "nextPmDate": "2025-10-11",
     "nextPmTime": "22:30-00:30"
   },
   {
-    "vehicleNo": "BT-11",
+    "vehicleNo": "WF-17",
     "nextPmDate": "2025-10-11",
     "nextPmTime": "00:30-02:30"
+  },
+  {
+    "vehicleNo": "BT-11",
+    "nextPmDate": "2025-10-11",
+    "nextPmTime": "03:30-05:30"
+  },
+  {
+    "vehicleNo": "TT-32",
+    "nextPmDate": "2025-10-11",
+    "nextPmTime": "05:30-08:00"
   },
   {
     "vehicleNo": "BF-12",
@@ -325,7 +340,7 @@
     "nextPmTime": "15:00-17:00"
   },
   {
-    "vehicleNo": "TT-27",
+    "vehicleNo": "WR-02",
     "nextPmDate": "2025-10-12",
     "nextPmTime": "22:30-00:30"
   },
@@ -340,7 +355,7 @@
     "nextPmTime": "03:30-05:30"
   },
   {
-    "vehicleNo": "TT-31",
+    "vehicleNo": "TT-34",
     "nextPmDate": "2025-10-12",
     "nextPmTime": "05:30-08:00"
   },
@@ -375,7 +390,7 @@
     "nextPmTime": "00:30-02:30"
   },
   {
-    "vehicleNo": "TT-32",
+    "vehicleNo": "TT-35",
     "nextPmDate": "2025-10-14",
     "nextPmTime": "03:30-05:30"
   },
@@ -395,7 +410,7 @@
     "nextPmTime": "10:00-12:00"
   },
   {
-    "vehicleNo": "WR-02",
+    "vehicleNo": "WR-03",
     "nextPmDate": "2025-10-15",
     "nextPmTime": "13:00-15:00"
   },
@@ -455,7 +470,7 @@
     "nextPmTime": "00:30-02:30"
   },
   {
-    "vehicleNo": "TT-34",
+    "vehicleNo": "TT-52",
     "nextPmDate": "2025-10-16",
     "nextPmTime": "03:30-05:30"
   },
@@ -550,7 +565,7 @@
     "nextPmTime": "08:00-10:00"
   },
   {
-    "vehicleNo": "TT-35",
+    "vehicleNo": "SF-06",
     "nextPmDate": "2025-10-21",
     "nextPmTime": "10:00-12:00"
   },
@@ -645,7 +660,7 @@
     "nextPmTime": "15:00-17:00"
   },
   {
-    "vehicleNo": "WR-03",
+    "vehicleNo": "TT-33",
     "nextPmDate": "2025-10-23",
     "nextPmTime": "22:30-00:30"
   },
@@ -690,17 +705,17 @@
     "nextPmTime": "22:30-00:30"
   },
   {
-    "vehicleNo": "TT-52",
+    "vehicleNo": "PF-02",
     "nextPmDate": "2025-10-24",
     "nextPmTime": "00:30-02:30"
   },
   {
-    "vehicleNo": "SF-06",
+    "vehicleNo": "TF-08",
     "nextPmDate": "2025-10-24",
     "nextPmTime": "03:30-05:30"
   },
   {
-    "vehicleNo": "TT-33",
+    "vehicleNo": "BT-15",
     "nextPmDate": "2025-10-24",
     "nextPmTime": "05:30-08:00"
   },
@@ -730,17 +745,17 @@
     "nextPmTime": "22:30-00:30"
   },
   {
-    "vehicleNo": "PF-02",
+    "vehicleNo": "SF-09",
     "nextPmDate": "2025-10-25",
     "nextPmTime": "00:30-02:30"
   },
   {
-    "vehicleNo": "BT-16",
+    "vehicleNo": "TT-66",
     "nextPmDate": "2025-10-25",
     "nextPmTime": "03:30-05:30"
   },
   {
-    "vehicleNo": "TF-08",
+    "vehicleNo": "BT-16",
     "nextPmDate": "2025-10-25",
     "nextPmTime": "05:30-08:00"
   },
@@ -770,57 +785,72 @@
     "nextPmTime": "22:30-00:30"
   },
   {
-    "vehicleNo": "TT-26",
+    "vehicleNo": "TT-67",
     "nextPmDate": "2025-10-28",
     "nextPmTime": "00:30-02:30"
   },
   {
-    "vehicleNo": "BT-15",
+    "vehicleNo": "TT-68",
     "nextPmDate": "2025-10-28",
     "nextPmTime": "03:30-05:30"
   },
   {
-    "vehicleNo": "TT-68",
-    "nextPmDate": "2025-10-29",
-    "nextPmTime": "08:00-10:00"
+    "vehicleNo": "BT-17",
+    "nextPmDate": "2025-10-28",
+    "nextPmTime": "05:30-08:00"
   },
   {
     "vehicleNo": "TT-69",
     "nextPmDate": "2025-10-29",
-    "nextPmTime": "10:00-12:00"
+    "nextPmTime": "08:00-10:00"
   },
   {
     "vehicleNo": "SF-11",
     "nextPmDate": "2025-10-29",
-    "nextPmTime": "13:00-15:00"
+    "nextPmTime": "10:00-12:00"
   },
   {
-    "vehicleNo": "SF-15",
+    "vehicleNo": "SF-12",
     "nextPmDate": "2025-10-29",
-    "nextPmTime": "15:00-17:00"
+    "nextPmTime": "13:00-15:00"
   },
   {
     "vehicleNo": "SF-13",
     "nextPmDate": "2025-10-29",
+    "nextPmTime": "15:00-17:00"
+  },
+  {
+    "vehicleNo": "SF-14",
+    "nextPmDate": "2025-10-29",
     "nextPmTime": "22:30-00:30"
   },
   {
-    "vehicleNo": "SF-16",
+    "vehicleNo": "SF-18",
     "nextPmDate": "2025-10-29",
     "nextPmTime": "00:30-02:30"
   },
   {
-    "vehicleNo": "SF-14",
+    "vehicleNo": "SF-16",
+    "nextPmDate": "2025-10-29",
+    "nextPmTime": "03:30-05:30"
+  },
+  {
+    "vehicleNo": "BT-18",
+    "nextPmDate": "2025-10-29",
+    "nextPmTime": "05:30-08:00"
+  },
+  {
+    "vehicleNo": "SF-17",
     "nextPmDate": "2025-10-30",
     "nextPmTime": "08:00-10:00"
   },
   {
-    "vehicleNo": "SF-12",
+    "vehicleNo": "SF-15",
     "nextPmDate": "2025-10-30",
     "nextPmTime": "10:00-12:00"
   },
   {
-    "vehicleNo": "SF-18",
+    "vehicleNo": "SF-10",
     "nextPmDate": "2025-10-30",
     "nextPmTime": "13:00-15:00"
   }
